@@ -1,0 +1,44 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+nuxt.d.ts
+.nitro
+.cache
+dist
+dist-ssr
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Database
+db.sqlite
+db.sqlite-*
+.wrangler
+
+# Misc
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+.fleet
+.idea
+.history
+.vercel
+.netlify
+coverage
+*.local
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tsbuildinfo
+
+# Local env files
+.env
+.env.*
+!.env.example

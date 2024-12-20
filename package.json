@@ -1,0 +1,23 @@
+{
+  "name": "zumtobel-assessment",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "clean": "rm -rf .nuxt/ .output node_modules/ dist/ package-lock.json"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "0.7.4",
+    "eslint": "^8.57.0 || ^9.0.0",
+    "nuxt": "^3.14.1592",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "packageManager": "pnpm@9.14.2"
+}
