@@ -10,7 +10,7 @@ npm install
 
 # pnpm
 pnpm install
-
+```
 
 ## Development Server
 
@@ -22,7 +22,7 @@ npm run dev
 
 # pnpm
 pnpm dev
-
+```
 
 ## Production
 
@@ -34,4 +34,4 @@ npm run build
 
 # pnpm
 pnpm build
-
+```
