@@ -1,36 +1,28 @@
 <script setup>
-import { computed } from 'vue';
-import { useChallengeQuery } from '../../composables/challenge'
-
 definePageMeta({
   id: 1
 })
 
+const distance = useState('distance', () => 0)
+const similarity = useState('similarity', () => 0)
 
-//const queryCache = useQueryCache()
-// TODO...dynamic id
-//const inputData = queryCache.getQueryData(['challengeInput', 1])
-
-const route = useRoute()
-
-const { challengeInput } = await useChallengeQuery(route.meta.id)
-
-const result = computed(() => {
-  const arr = challengeInput.value.split(/\r?\n/).map(row => row.split('  '))
+function solveChallenge(data) {
+  distance.value = 0
+  similarity.value = 0
+  
+  const arr = data.split(/\r?\n/).map(row => row.split('  '))
   arr.pop()
 
   const left = arr.map(([leftItem]) => +leftItem).sort()
-  const right = arr.map(([,rightItem]) => +rightItem).sort()
+  const right = arr.map(([, rightItem]) => +rightItem).sort()
 
   // part 1
-  let distance = 0
-  for (let i = 0; i < left.length -1; i++) {
-    distance += Math.abs(right[i] - left[i])
+  for (let i = 0; i < left.length - 1; i++) {
+    distance.value += Math.abs(right[i] - left[i])
   }
 
   // part 2
-  let similarity = 0
-  for (let i = 0; i < left.length -1; i++) {
+  for (let i = 0; i < left.length - 1; i++) {
     const number = left[i]
     const firstIdx = right.indexOf(number)
     if (firstIdx === -1) {
@@ -39,25 +31,30 @@ const result = computed(() => {
 
     const lastIdx = right.lastIndexOf(number)
     const occurrences = (lastIdx - firstIdx + 1)
-    similarity += occurrences * number
+    similarity.value += occurrences * number
   }
-
-  return { 
-    distance, 
-    similarity
-  }
-})
-
+}
 </script>
 
 <template>
+  <TheInputChallenge @new-data="solveChallenge" />
 
-<!-- TODO: use slot here for input part - collapsible component
-  {{ challengeInput }}
- -->
- 
- <!-- output part-->
-  <p>distance: {{ result.distance }}</p>
-  <p>similarity: {{ result.similarity }}</p>
+  <!-- output TODO-->
+  <ClientOnly>
+    <div v-if="distance && similarity">
+      Results
+      <p>distance: {{ distance }}</p>
+      <p>similarity: {{ similarity }}</p>
+    </div>
+  </ClientOnly>
 
+
+  <!--
+<NuxtClientFallback>
+  
+this is a fallback - there was an error calling AOC API
+{{ state.error }}
+   
+  </NuxtClientFallback>
+-->
 </template>

@@ -6,6 +6,13 @@ const links = router.getRoutes().map(route => {
     to: `${route.path}`
   }
 })
+
+const aocSessionId = useCookie('session')
+const queryCache = useQueryCache()
+watch(aocSessionId, () =>  {
+  queryCache.invalidateQueries({ key: ['challengeInput', router.currentRoute.value.meta?.id] })
+})
+
 </script>
 
 <template>
@@ -18,5 +25,10 @@ const links = router.getRoutes().map(route => {
         </NuxtLink>
       </li>
     </ul>
+
+    <div>
+      <label for="sessionId">Advent of code session:</label>
+      <input type="text" name="sessionId" v-model="aocSessionId">
+    </div>
   </header>
 </template>
