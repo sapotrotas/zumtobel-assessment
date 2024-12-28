@@ -3,6 +3,8 @@ definePageMeta({
   id: 1
 })
 
+const isUserChallenge = useCookie('isUserChallenge')
+const aocSessionCookie = useCookie('session')
 const distance = useState('distance', () => 0)
 const similarity = useState('similarity', () => 0)
 
@@ -37,6 +39,19 @@ function solveChallenge(data) {
 </script>
 
 <template>
+  <div v-if="isUserChallenge && aocSessionCookie">
+    input using session
+    <br>
+  </div>
+
+  <div v-if="isUserChallenge && !aocSessionCookie">
+    missing session id
+  </div>
+
+  <div v-if="!isUserChallenge || !aocSessionCookie">
+    input using file
+  </div>
+
   <TheInputChallenge @new-data="solveChallenge" />
 
   <!-- output TODO-->
@@ -48,13 +63,11 @@ function solveChallenge(data) {
     </div>
   </ClientOnly>
 
-
   <!--
-<NuxtClientFallback>
-  
-this is a fallback - there was an error calling AOC API
-{{ state.error }}
-   
+  <NuxtClientFallback>
+    client fallback error - there was an error calling AOC API
+    <br>
+    {{ state.error }}
   </NuxtClientFallback>
--->
+  -->
 </template>

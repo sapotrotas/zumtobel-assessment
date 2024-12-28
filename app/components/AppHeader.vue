@@ -7,11 +7,13 @@ const links = router.getRoutes().map(route => {
   }
 })
 
-const aocSessionId = useCookie('session')
-const queryCache = useQueryCache()
+/*
 watch(aocSessionId, () =>  {
-  queryCache.invalidateQueries({ key: ['challengeInput', router.currentRoute.value.meta?.id] })
+ // console.log('watching aocSessionId = ', newValue)
+ //   console.log('watching aocSessionId | INVALIDATING QUERY ', newValue)
+    queryCache.invalidateQueries({ key: ['challengeInput', router.currentRoute.value.meta?.id] })
 })
+*/
 
 </script>
 
@@ -26,9 +28,6 @@ watch(aocSessionId, () =>  {
       </li>
     </ul>
 
-    <div>
-      <label for="sessionId">Advent of code session:</label>
-      <input type="text" name="sessionId" v-model="aocSessionId">
-    </div>
+  
   </header>
 </template>

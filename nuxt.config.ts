@@ -11,14 +11,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   routeRules: {
     // MOVE PROXY TO ENV FILE MAYBE
-    '/api/**': {
+    '/api/aoc/**': {
       proxy: 'https://adventofcode.com/**'  // avoid CORS error
     },
   },
-  experimental: {
-    clientFallback: true,
-    renderJsonPayloads: true
-  },
+//  experimental: {
+//    clientFallback: true,
+//    renderJsonPayloads: true
+//  },
   //  devServer: {
   //    https: true,
   //  },
@@ -31,12 +31,12 @@ export default defineNuxtConfig({
     }
   },
   security: {
-    // nuxt-security options
+  // nuxt-security options
   },
   app: {
     head: {
       htmlAttrs: {
-        // style: 'background-color: #111; color: #f0f0f0'
+      // style: 'background-color: #111; color: #f0f0f0'
       }
     }
   }

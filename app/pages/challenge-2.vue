@@ -2,11 +2,8 @@
 definePageMeta({
   id: 2
 })
-
-
 </script>
 
 <template>
-<TheInputChallenge/>
-
+  <TheInputChallenge/>
 </template> 
