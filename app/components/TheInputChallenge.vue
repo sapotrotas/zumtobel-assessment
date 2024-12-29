@@ -10,9 +10,14 @@ const emit = defineEmits(["newData"])
 
 const { challengeInput, state } = await useChallengeQuery()
 
-// queryCache.invalidateQueries({ key: ['challengeInput', router.currentRoute.value.meta?.id] })
+// const dataFormatted = useState('dataFormatted', () => '')
 
 watch(challengeInput, () => {
+  // console.log('challengeInput changed ')
+ 
+  // TODO... isto nao esta a atualizar bem...ver o resultado de cada prob tb
+  // dataFormatted.value = challengeInput.value.split(/\r?\n/).map(row => row.split('  '))
+  //console.log('dataFormatted = ', dataFormatted.value)
   emit('newData', challengeInput.value)
 })
 
@@ -24,12 +29,19 @@ watch(challengeInput, () => {
     session cookie used = {{ aocSessionCookie }}
   </div>
   <br>
+  
   <!-- 
   TODO: collapsible component
--->
-
+  -->
   <div v-if="!state.error">
-    {{ challengeInput }}
+    {{ challengeInput }} 
+<!--
+    <div v-if="dataFormatted">
+      <div v-for="el in dataFormatted">
+          {{ el.toString() }}
+      </div>
+    </div>
+-->
   </div>
 
   <div v-if="state.error">

@@ -41,7 +41,6 @@ function solveChallenge(data) {
 <template>
   <div v-if="isUserChallenge && aocSessionCookie">
     input using session
-    <br>
   </div>
 
   <div v-if="isUserChallenge && !aocSessionCookie">
@@ -51,9 +50,7 @@ function solveChallenge(data) {
   <div v-if="!isUserChallenge || !aocSessionCookie">
     input using file
   </div>
-
-  <TheInputChallenge @new-data="solveChallenge" />
-
+  <br>
   <!-- output TODO-->
   <ClientOnly>
     <div v-if="distance && similarity">
@@ -62,6 +59,8 @@ function solveChallenge(data) {
       <p>similarity: {{ similarity }}</p>
     </div>
   </ClientOnly>
+
+  <TheInputChallenge @new-data="solveChallenge" />
 
   <!--
   <NuxtClientFallback>

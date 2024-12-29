@@ -1,8 +1,8 @@
 export async function useChallengeQuery() {
   const isUserChallenge = useCookie('isUserChallenge')
   const aocSessionCookie = useCookie('session')
-  const router = useRouter()
-  const challengeDay = router.currentRoute.value.meta?.id
+  const route = useRoute()
+  const challengeDay = route.meta.id
   
   if (isUserChallenge.value && !aocSessionCookie?.value) {
     //console.log('composable with session = ', aocSessionCookie.value)
