@@ -4,7 +4,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia/colada-nuxt',
     '@nuxt/eslint',
-    'nuxt-security'
+    'nuxt-security',
+    '@nuxthub/core',
+    '@nuxtjs/tailwindcss'
   ],
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-11-01',
@@ -22,6 +24,9 @@ export default defineNuxtConfig({
   //  devServer: {
   //    https: true,
   //  },
+  hub: {
+    // nuxt hub options
+  },
   eslint: {
     config: {
       stylistic: {
@@ -39,5 +44,8 @@ export default defineNuxtConfig({
       // style: 'background-color: #111; color: #f0f0f0'
       }
     }
+  },
+  tailwindcss: {
+    // Options
   }
 })
