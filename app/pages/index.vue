@@ -7,7 +7,7 @@ const aocSessionCookie = useCookie('session')
   <div>
     Choose method:
     <br>
-    <button @click="isUserChallenge = true">Session</button>
+    <button class="custom-button" @click="isUserChallenge = true">Session</button>
     <button @click="isUserChallenge = false">File</button>
   </div>
   <div v-if="isUserChallenge">

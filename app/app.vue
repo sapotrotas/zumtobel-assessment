@@ -14,7 +14,9 @@ watch(
 </script> -->
 
 <template> 
-  <div>
+
+<!--max-w-sm rounded overflow-hidden shadow-lg mb-4-->
+  <div class="container mx-auto">
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
