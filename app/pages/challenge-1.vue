@@ -3,7 +3,6 @@ definePageMeta({
   id: 1
 })
 
-// TODO... improve this part - no need to have this logic here
 const isUserChallenge = useCookie('isUserChallenge')
 const aocSessionCookie = useCookie('session')
 
@@ -14,7 +13,7 @@ function solveChallenge(data) {
   distance.value = 0
   similarity.value = 0
 
-  const arr = data.split(/\r?\n/).map(row => row.split('  '))
+  const arr = data.map(row => row.split('  '))
   arr.pop()
 
   const left = arr.map(([leftItem]) => +leftItem).sort()
@@ -63,13 +62,4 @@ function solveChallenge(data) {
   </ClientOnly>
 
   <TheInputChallenge @new-data="solveChallenge" />
-
-  <!-- TODO... do I really need this for CSR? -->
-  <!--
-  <NuxtClientFallback>
-    client fallback error - there was an error calling AOC API
-    <br>
-    {{ state.error }}
-  </NuxtClientFallback>
-  -->
 </template>

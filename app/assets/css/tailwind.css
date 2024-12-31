@@ -2,6 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-.custom-button {
-  padding: 10px;
+
+:root {
+  --header-height: 4rem;
+  /* --primary-color: red; */
+  /* --secondary-color: #000; */
+}
+
+.app-btn {      
+  @apply flex-shrink-0;
+  @apply rounded-lg;
+  @apply text-base;
+  @apply text-center;
+  @apply font-medium;
+  @apply py-2.5;
+  @apply px-5;
+  /* &:hover {
+    @apply ;
+  } */
+  &:focus {
+    @apply outline-none;
+    /* @apply ring-2;
+    @apply ring-green-400; */
+  }
+  &:focus-visible {
+    @apply outline-0;
+  }
+}
+
+.router-link-active {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.home-nav > div {
+  @apply w-max;
+  @apply h-full;
+  @apply grow;
+  @apply border;
+  @apply border-gray-500;
+  @apply rounded-lg;
+  @apply text-lg;
+  @apply text-center;
+  @apply font-medium;
+  &:hover {
+    @apply bg-gray-500;
+    @apply text-white;
+  }
 }

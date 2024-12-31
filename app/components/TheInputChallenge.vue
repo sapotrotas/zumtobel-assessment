@@ -1,50 +1,36 @@
 <script setup>
 import { useChallengeQuery } from '../../composables/challenge'
 
-//const router = useRouter()
-//const queryCache = useQueryCache()
-const isUserChallenge = useCookie('isUserChallenge')
-const aocSessionCookie = useCookie('session')
-
 const emit = defineEmits(["newData"])
 
-const { challengeInput, state } = await useChallengeQuery()
+const { challengeInput, error } = await useChallengeQuery()
+const inputArr = challengeInput.value?.input.split(/\n/)
 
-// const dataFormatted = useState('dataFormatted', () => '')
-
-watch(challengeInput, () => {
-  // console.log('challengeInput changed ')
- 
-  // TODO... isto nao esta a atualizar bem...ver o resultado de cada prob tb
-  // dataFormatted.value = challengeInput.value.split(/\r?\n/).map(row => row.split('  '))
-  //console.log('dataFormatted = ', dataFormatted.value)
-  emit('newData', challengeInput.value)
-})
-
+if (inputArr) {
+  emit('newData', inputArr)
+}
 </script>
 
 <template>
-
-  <div v-if="isUserChallenge">
+  <!-- <div v-if="isUserChallenge">
     session cookie used = {{ aocSessionCookie }}
   </div>
-  <br>
+  <br> -->
   
   <!-- 
   TODO: collapsible component
   -->
-  <div v-if="!state.error">
-    {{ challengeInput }} 
-<!--
-    <div v-if="dataFormatted">
-      <div v-for="el in dataFormatted">
-          {{ el.toString() }}
-      </div>
+  <div v-if="error">
+    <div v-if="error.statusCode === 500">
+      There was an error fetching data. Is the session id correct? 
     </div>
--->
+    <div v-else>
+      {{ error.data }}
+    </div>
   </div>
-
-  <div v-if="state.error">
-    {{ state.error }}
+  <div v-else>
+    <div v-for="input in inputArr">
+      {{ input }}
+    </div>
   </div>
 </template>

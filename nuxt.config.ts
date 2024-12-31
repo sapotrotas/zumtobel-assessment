@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@pinia/nuxt',
-    '@pinia/colada-nuxt',
     '@nuxt/eslint',
     'nuxt-security',
     '@nuxthub/core',
@@ -17,13 +15,6 @@ export default defineNuxtConfig({
       proxy: 'https://adventofcode.com/**'  // avoid CORS error
     },
   },
-//  experimental: {
-//    clientFallback: true,
-//    renderJsonPayloads: true
-//  },
-  //  devServer: {
-  //    https: true,
-  //  },
   hub: {
     // nuxt hub options
   },
@@ -44,8 +35,5 @@ export default defineNuxtConfig({
       // style: 'background-color: #111; color: #f0f0f0'
       }
     }
-  },
-  tailwindcss: {
-
   }
 })

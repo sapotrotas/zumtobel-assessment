@@ -8,13 +8,12 @@ export default {
         serif: ['Merriweather', 'serif'],
       },
       colors: {
-        primary: colors.red
+        // "primary-color": "var(--primary-color)",
+        // "secondary-color": "var(--secondary-color)"
+        primary: colors.green,
       },
       container: {
          constrained: 'max-w-4xl'
-      },
-      theme: {
-        
       }
     }
   }

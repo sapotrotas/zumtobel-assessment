@@ -1,33 +1,7 @@
-<script setup>
-const router = useRouter()
-const links = router.getRoutes().map(route => {
-  return {
-    label: route.path.slice(route.path.lastIndexOf('-') + 1),
-    to: `${route.path}`
-  }
-})
-
-/*
-watch(aocSessionId, () =>  {
- // console.log('watching aocSessionId = ', newValue)
- //   console.log('watching aocSessionId | INVALIDATING QUERY ', newValue)
-    queryCache.invalidateQueries({ key: ['challengeInput', router.currentRoute.value.meta?.id] })
-})
-*/
-
-</script>
-
 <template>
-  <header class="flex items-center mx-auto px-4"> 
-    <ul>
-      Challenge:
-      <li v-for="link in links">
-        <NuxtLink :to="link.to" >
-          {{ link.label }}
-        </NuxtLink>
-      </li>
-    </ul>
-
-  
+  <header class="mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-3 h-[--header-height] border-b border-gray-200">
+    <nav class="items-center flex gap-x-4 md:gap-x-6 lg:gap-x-8">
+      <Navigation :show-home="true"/>
+    </nav>
   </header>
 </template>

@@ -7,7 +7,10 @@ const part1Safe = useState('part1safe', () => 0)
 const part2Safe = useState('part2safe', () => 0)
 
 function solveChallenge(data) {
-  const arr = data.split(/\r?\n/).map(row => row.split(' ').map(Number))
+  part1Safe.value = 0
+  part2Safe.value = 0
+
+  const arr = data.map(row => row.split(' ').map(Number))
 
   arr.forEach(row => {
     if (row.length < 3 || Number(isRowSafe(row))) {
