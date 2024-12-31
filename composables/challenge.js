@@ -1,4 +1,5 @@
 export async function useChallengeQuery() {
+  const nuxtApp = useNuxtApp()
   const isUserChallenge = useCookie('isUserChallenge')
   const aocSessionCookie = useCookie('session')
   const route = useRoute()
@@ -7,9 +8,7 @@ export async function useChallengeQuery() {
   const urlFile = `/api/read?file=challenge-${challengeDay}`
   const apiUrl = isUserChallenge.value ? urlAoc : urlFile
 
-  const nuxtApp = useNuxtApp()
-  const requestFetch = useRequestFetch()
-  const { data: challengeInput, error } = await useAsyncData(() => requestFetch(apiUrl), {
+  const { data: challengeInput, error } = await useAsyncData(() => useRequestFetch()(apiUrl), {
     transform(input) {
       return {
         input,
@@ -18,17 +17,31 @@ export async function useChallengeQuery() {
       }
     },
     getCachedData(key) {
-      const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+      return
+      // console.log('getCachedData | key = ', key)
+      // console.log('getCachedData | isUserChallenge.value = ', isUserChallenge.value)
 
-      // refetch
-      if (!data || (aocSessionCookie.value !== data.sessionId || challengeDay !== data.challengeDay)) {
-        return
-      }
+      // const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
 
-      console.log('same user, returning data ', data)
-      return data
+      // // refetch
+      // if (!data) {
+      //   return
+      // }
+
+      // // using same session id
+      // if (isUserChallenge.value && aocSessionCookie.value !== data.sessionId) {
+      //   return
+      // }
+
+      // // challengeDay !== data.challengeDay
+
+
+      // console.log('getCachedData | returning data ', data)
+      // return data
     }
   })
+
+  console.log('composable | data ', challengeInput)
 
   return {
     challengeInput,

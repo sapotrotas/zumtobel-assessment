@@ -4,11 +4,8 @@ import { useChallengeQuery } from '../../composables/challenge'
 const emit = defineEmits(["newData"])
 
 const { challengeInput, error } = await useChallengeQuery()
-const inputArr = challengeInput.value?.input.split(/\n/)
-
-if (inputArr) {
-  emit('newData', inputArr)
-}
+const inputArr = challengeInput.value?.input.split(/\n/) || []
+emit('newData', inputArr)
 </script>
 
 <template>

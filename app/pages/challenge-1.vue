@@ -48,9 +48,6 @@ function solveChallenge(data) {
     missing session id
   </div>
 
-  <div v-if="!isUserChallenge || !aocSessionCookie">
-    input using file
-  </div>
   <br>
   <!-- output TODO-->
   <ClientOnly>

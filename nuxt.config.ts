@@ -15,6 +15,11 @@ export default defineNuxtConfig({
       proxy: 'https://adventofcode.com/**'  // avoid CORS error
     },
   },
+  nitro: {
+    experimental: {
+      openAPI: true
+    }
+  },
   hub: {
     // nuxt hub options
   },

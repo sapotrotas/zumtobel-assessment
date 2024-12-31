@@ -9,6 +9,9 @@
   function solveChallenge(data) {
     part1Sum.value = 0
     part2Sum.value = 0
+    if (!data || !data.length) {
+      return
+    }
 
     // part 1
     let pattern = /mul\(\d{1,3},\d{1,3}\)/g
