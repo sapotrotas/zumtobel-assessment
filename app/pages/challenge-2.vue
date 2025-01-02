@@ -32,7 +32,7 @@ function solveChallenge(data) {
   part2Safe.value += part1Safe.value
 }
 
-function isRowSafe(row) {
+const isRowSafe = (row) => {
   const sign = Math.sign(row[1] - row[0]) // +1 increasing, -1 decreasing
   const pairs = pairsArray(row)
 
@@ -61,6 +61,9 @@ const pairsArray = (arr) => {
 </script>
 
 <template>
+  <InputMethod />
+  <br>
+
   <!-- results -->
   <ClientOnly>
     <div v-if="part1Safe && part2Safe">

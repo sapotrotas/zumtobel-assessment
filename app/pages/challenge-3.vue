@@ -50,6 +50,9 @@
   </script>
 
   <template>
+    <InputMethod />
+    <br>
+
     <!-- results -->
     <ClientOnly>
       <div v-if="part1Sum && part2Sum">

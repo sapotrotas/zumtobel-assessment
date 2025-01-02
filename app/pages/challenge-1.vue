@@ -40,6 +40,9 @@ function solveChallenge(data) {
 </script>
 
 <template>
+  <InputMethod />
+  <br>
+  
   <div v-if="isUserChallenge && aocSessionCookie">
     input using session
   </div>
