@@ -91,6 +91,13 @@ watch(
 // TODO... remove
 // aoc github: 53616c7465645f5fe1a8fc4cc124f707231915740288b4464fc94dbc337f4ae2237a6738dd38f6d761e5426dd14b1c7cbc0a79b947a169485736d181f75d5205
 // aoc google: 53616c7465645f5f54e88a90381c442907d6a6cf6c17cb5957031ed1f8bddfc921810fe834cd123eea7ff8ca400ff590072d9005e14ef7d3e7c2a598d003cc90
+
+const fileUrl = '/challenges/challenge-1.txt' 
+
+fetch(fileUrl)
+   .then( r => r.text() )
+   .then( t => console.log(t) )
+
 </script>
 
 <template>
