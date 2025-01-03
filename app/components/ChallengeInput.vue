@@ -17,6 +17,9 @@ const getUrl = () => {
   return inputMethod.value === 'file' ? urlFile : urlAoc
 }
 
+// TODO... DO NOT CALL API WHEN SETTING SESSION NULL
+// TODO... DO NOT CALL API WHEN CHANGING METHOD TO AOC SESSION AND IT IS NULL
+
 // TODO... improve
 const generateKey = () => {
   if (inputMethod.value === 'session' && aocSessionCookie?.value) {

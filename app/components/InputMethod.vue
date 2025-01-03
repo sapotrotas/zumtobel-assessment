@@ -4,6 +4,11 @@ const aocSessionCookie = useCookie('session')
 
 const sessionid = useState('sessionid', () => aocSessionCookie.value || '')
 
+const props = defineProps({
+  showInstructions: String,
+  default: false
+})
+
 const setsession = () => {
   aocSessionCookie.value = sessionid.value
 }
@@ -35,6 +40,14 @@ const setsession = () => {
     v-if="inputMethod === 'session'"
     class="mt-4"
   >
+    <div 
+      v-if="showInstructions"
+      class="text-sm mb-4"
+    >
+      <p>1. Login in Advent of Code website</p>
+      <p>2. Copy Session id from cookies using developer tools</p>
+      <p>3. Paste here and press Set</p>
+    </div>
     <label
       for="sessionId"
       class="text-sm"

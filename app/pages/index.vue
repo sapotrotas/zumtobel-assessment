@@ -13,7 +13,8 @@ const showNavigation = computed(() => {
       Welcome
     </h1>
 
-    <InputMethod />
+
+    <InputMethod :show-instructions="true"/>
 
     <!-- TODO add instructions -->
     <div v-if="showNavigation">
