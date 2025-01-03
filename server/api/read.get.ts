@@ -13,23 +13,23 @@ import * as path from 'node:path';
 
 
 import { serveStatic } from "h3"
-import { stat, readFile } from "node:fs/promises";
+import { /*stat, */readFile } from "node:fs/promises";
 // import { join } from "pathe";
 
 export default defineEventHandler((event) => {
   return serveStatic(event, {
     getContents: (id) => readFile(path.join('public/challenges', 'challenge-1.txt')),
     getMeta: async (id) => {
-      const stats = await stat(path.join('public/challenges', 'challenge-1.txt')).catch(() => {});
+      // const stats = await stat(path.join('public/challenges', 'challenge-1.txt')).catch(() => {});
 
-      if (!stats || !stats.isFile()) {
-        console.log('id = ', id)
-        return;
-      }
+      // if (!stats || !stats.isFile()) {
+      //   console.log('id = ', id)
+      //   return;
+      // }
 
       return {
-        size: stats.size,
-        mtime: stats.mtimeMs,
+        // size: stats.size,
+        // mtime: stats.mtimeMs,
       };
     },
   });
