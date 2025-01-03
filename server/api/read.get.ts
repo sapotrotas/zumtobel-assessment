@@ -13,17 +13,17 @@
 
 
 
-import * as path from 'node:path';
-import * as fs from 'node:fs';
+// import * as path from 'node:path';
+// import * as fs from 'node:fs';
 
-export default defineEventHandler(async (event) => {
-  const url = getRequestURL(event)
-  const fileName =  url.searchParams.getAll('file')
-  // console.log('process = ', process.cwd())
-  const filePath = path.join('public/challenges', `${fileName}.txt`)
-  // const filePath = path.join(process.cwd(), 'public/challenges', `${fileName}.txt`)
-  // const data = await fs.promises.readFile(filePath, 'utf-8')
-  // return data
+// export default defineEventHandler(async (event) => {
+//   const url = getRequestURL(event)
+//   const fileName =  url.searchParams.getAll('file')
+//   // console.log('process = ', process.cwd())
+//   const filePath = path.join('public/challenges', `${fileName}.txt`)
+//   // const filePath = path.join(process.cwd(), 'public/challenges', `${fileName}.txt`)
+//   // const data = await fs.promises.readFile(filePath, 'utf-8')
+//   // return data
 
-  return sendStream(event, fs.createReadStream(filePath))
-})
+//   return sendStream(event, fs.createReadStream(filePath))
+// })
