@@ -5,7 +5,7 @@ const aocSessionCookie = useCookie('session')
 const sessionid = useState('sessionid', () => aocSessionCookie.value || '')
 
 const props = defineProps({
-  showInstructions: String,
+  showInstructions: Boolean,
   default: false
 })
 
