@@ -3,9 +3,6 @@ definePageMeta({
   id: 1
 })
 
-const isUserChallenge = useCookie('isUserChallenge')
-const aocSessionCookie = useCookie('session')
-
 const distance = useState('distance', () => 0)
 const similarity = useState('similarity', () => 0)
 
@@ -40,26 +37,24 @@ function solveChallenge(data) {
 </script>
 
 <template>
-  <InputMethod />
-  <br>
-  
-  <div v-if="isUserChallenge && aocSessionCookie">
-    input using session
-  </div>
+  <Collapsible :title="'Input Method'">
+    <InputMethod />
+  </Collapsible>
 
-  <div v-if="isUserChallenge && !aocSessionCookie">
-    missing session id
-  </div>
+  <Collapsible :title="'Challenge Results'" :expanded="true">
+    <ClientOnly>
+      <div>
+        <span class="font-bold">distance: </span>
+        <span v-if="distance">{{ distance }}</span>
+      </div>
+      <div>
+        <span class="font-bold">similarity: </span>
+        <span v-if="similarity">{{ similarity }}</span>
+      </div>
+    </ClientOnly>
+  </Collapsible>
 
-  <br>
-  <!-- output TODO-->
-  <ClientOnly>
-    <div v-if="distance && similarity">
-      Results
-      <p>distance: {{ distance }}</p>
-      <p>similarity: {{ similarity }}</p>
-    </div>
-  </ClientOnly>
-
-  <TheInputChallenge @new-data="solveChallenge" />
+  <Collapsible :title="'Challenge input'">
+    <ChallengeInput @new-data="solveChallenge" />
+  </Collapsible>
 </template>

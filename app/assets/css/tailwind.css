@@ -2,32 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --header-height: 4rem;
-  /* --primary-color: red; */
-  /* --secondary-color: #000; */
 }
 
-.app-btn {      
-  @apply flex-shrink-0;
+.app-panel {
+  @apply ring-1;
+  @apply bg-white;
+  @apply ring-gray-200;
   @apply rounded-lg;
-  @apply text-base;
+  @apply shadow-md;
+  @apply p-2 md:p-4 lg:p-8;
+}
+
+.app__button {
+  @apply min-w-16;
+  @apply flex-shrink-0;
+  @apply items-center;
+  @apply rounded-md;
   @apply text-center;
   @apply font-medium;
-  @apply py-2.5;
-  @apply px-5;
+  @apply text-sm;
+  @apply px-2.5;
+  @apply py-1.5;
+  @apply mb-1.5;
+  @apply text-secondary-700;
+  @apply bg-secondary-100;
+  @apply hover:bg-secondary-200;
+  @apply focus:outline-none;
+  @apply focus-visible:outline-0;
+  @apply focus-visible:ring-2;
+  @apply focus-visible:ring-inset;
+  @apply focus-visible:ring-secondary-500;
   /* &:hover {
     @apply ;
   } */
-  &:focus {
-    @apply outline-none;
-    /* @apply ring-2;
-    @apply ring-green-400; */
-  }
-  &:focus-visible {
-    @apply outline-0;
-  }
+}
+
+.app__button--selected {
+  @apply text-secondary-100;
+  @apply bg-secondary-500;
+  @apply hover:bg-secondary-500;
 }
 
 .router-link-active {
@@ -36,17 +51,52 @@
 }
 
 .home-nav > div {
-  @apply w-max;
-  @apply h-full;
-  @apply grow;
-  @apply border;
-  @apply border-gray-500;
-  @apply rounded-lg;
-  @apply text-lg;
+  @apply min-w-20;
+  @apply flex-shrink-0;
+  @apply items-center;
+  @apply rounded-md;
   @apply text-center;
   @apply font-medium;
-  &:hover {
-    @apply bg-gray-500;
-    @apply text-white;
-  }
+  @apply text-base;
+  @apply px-2.5;
+  @apply py-2.5;
+  @apply mb-1.5;
+  @apply mt-6;
+  @apply text-secondary-700;
+  @apply bg-white;
+  @apply outline;
+  @apply outline-1;
+  @apply hover:bg-secondary-200;
+  @apply focus:outline-none;
+  @apply focus-visible:outline-0;
+  @apply focus-visible:ring-2;
+  @apply focus-visible:ring-inset;
+  @apply focus-visible:ring-secondary-500;
+}
+
+.collapse {
+  @apply h-0;
+  @apply hidden;
+}
+
+.collapsible__button {
+  @apply w-full;
+  @apply flex-shrink-0;
+  @apply inline-flex;
+  @apply items-center;
+  @apply rounded-md;
+  @apply gap-x-1.5;
+  @apply px-2.5;
+  @apply py-1.5;
+  @apply mb-1.5;
+  @apply font-medium;
+  @apply text-sm;
+  @apply text-primary-700;
+  @apply bg-primary-100;
+  @apply hover:bg-primary-200;
+  @apply focus:outline-none;
+  @apply focus-visible:outline-0;
+  @apply focus-visible:ring-2;
+  @apply focus-visible:ring-inset;
+  @apply focus-visible:ring-primary-500;
 }

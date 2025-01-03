@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -20,24 +19,14 @@ export default defineNuxtConfig({
       openAPI: true
     }
   },
-  hub: {
+  // hub: {
     // nuxt hub options
-  },
+  // },
   eslint: {
     config: {
       stylistic: {
         quotes: 'single',
         commaDangle: 'never'
-      }
-    }
-  },
-  security: {
-  // nuxt-security options
-  },
-  app: {
-    head: {
-      htmlAttrs: {
-      // style: 'background-color: #111; color: #f0f0f0'
       }
     }
   }

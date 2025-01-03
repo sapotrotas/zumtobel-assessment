@@ -61,17 +61,24 @@ const pairsArray = (arr) => {
 </script>
 
 <template>
-  <InputMethod />
-  <br>
+  <Collapsible :title="'Input Method'">
+    <InputMethod />
+  </Collapsible>
 
-  <!-- results -->
-  <ClientOnly>
-    <div v-if="part1Safe && part2Safe">
-      Results
-      <p>part 1 safe reports: {{ part1Safe }}</p>
-      <p>part 2 safe reports: {{ part2Safe }}</p>
-    </div>
-  </ClientOnly>
+  <Collapsible :title="'Challenge Results'" :expanded="true">
+    <ClientOnly>
+      <div>
+        <span class="font-bold">part 1 safe reports: </span>
+        <span v-if="part1Safe">{{ part1Safe }}</span>  
+      </div>
+      <div>
+        <span class="font-bold">part 2 safe reports: </span>
+        <span v-if="part2Safe">{{ part2Safe }}</span>
+      </div>
+    </ClientOnly>
+  </Collapsible>
 
-  <TheInputChallenge @new-data="solveChallenge" />
+  <Collapsible :title="'Challenge input'">
+    <ChallengeInput @new-data="solveChallenge" />
+  </Collapsible>
 </template> 
