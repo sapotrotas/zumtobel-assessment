@@ -8,7 +8,7 @@ export default {
         secondary: colors.gray
       },
       container: {
-         constrained: 'max-w-4xl'
+        constrained: 'max-w-4xl'
       }
     }
   }

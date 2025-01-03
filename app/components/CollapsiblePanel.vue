@@ -1,5 +1,5 @@
 <script setup>
- const props = defineProps({
+const props = defineProps({
   title: String,
   expanded: {
     type: Boolean,
@@ -12,12 +12,17 @@ const isExpanded = ref(props.expanded)
 
 <template>
   <div class="w-full flex flex-col">
-    <button @click="isExpanded = !isExpanded" class="collapsible__button" type="button">
+    <button
+      type="button"
+      class="collapsible__button"
+      @click="isExpanded = !isExpanded"
+    >
       <span>{{ title }}</span>
     </button>
-
-    <!-- TODO: animation? transition-[height] duration-300 ease-out v-enter-to-->
-    <div :class="{ collapse: !isExpanded }" class="block w-full basis-full overflow-hidden">
+    <div
+      :class="{ collapse: !isExpanded }"
+      class="block w-full basis-full overflow-hidden"
+    >
       <div class="text-sm text-gray-500 p-1.5 pb-3">
         <slot />
       </div>

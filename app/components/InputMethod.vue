@@ -15,23 +15,57 @@ const setsession = () => {
       Select the input method:
     </h2>
     <div class="flex justify items-center gap-x-4 ">
-      <button @click="inputMethod = 'session'" :class="{ 'app__button--selected': inputMethod === 'session' }" class="app__button">
+      <button
+        :class="{ 'app__button--selected': inputMethod === 'session' }"
+        class="app__button"
+        @click="inputMethod = 'session'"
+      >
         AoC Session
       </button>
-      <button @click="inputMethod = 'file'" :class="{ 'app__button--selected': inputMethod === 'file' }" class="app__button">
+      <button
+        :class="{ 'app__button--selected': inputMethod === 'file' }"
+        class="app__button"
+        @click="inputMethod = 'file'"
+      >
         File
       </button>
     </div>
   </div>
-  <div v-if="inputMethod === 'session'" class="mt-4">
-    <label for="sessionId" class="text-sm">Advent of Code session: </label>
+  <div
+    v-if="inputMethod === 'session'"
+    class="mt-4"
+  >
+    <label
+      for="sessionId"
+      class="text-sm"
+    >
+      Advent of Code session:
+    </label>
     <div
-      class="flex rounded-md pl-3 outline outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-gray-400">
-      <input type="text" name="sessionId" id="sessionId" autocomplete="off" v-model="sessionid"
-        class="block min-w-0 grow py-1.5 pl-1 pr-3 text-sm text-gray-900 focus:outline focus:outline-0 sm:text-sm/6">
-      <button v-if="sessionid" @click="sessionid = null; aocSessionCookie = null"
-        class="appearance-none rounded-full py-1.5 pl-3 pr-3 text-base text-gray-600 sm:text-sm/6">X</button>
+      class="flex rounded-md pl-3 outline outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-gray-400"
+    >
+      <input
+        id="sessionId"
+        v-model="sessionid"
+        name="sessionId"
+        type="text"
+        autocomplete="off"
+        class="block min-w-0 grow py-1.5 pl-1 pr-3 text-sm text-gray-900 focus:outline focus:outline-0 sm:text-sm/6"
+      >
+      <button
+        v-if="sessionid"
+        class="appearance-none rounded-full py-1.5 pl-3 pr-3 text-base text-gray-600 sm:text-sm/6"
+        @click="sessionid = null; aocSessionCookie = null"
+      >
+        X
+      </button>
     </div>
-    <button v-if="sessionid" @click="setsession" class="app__button w-full mt-2">Set</button>
+    <button
+      v-if="sessionid"
+      class="app__button w-full mt-2"
+      @click="setsession"
+    >
+      Set
+    </button>
   </div>
 </template>

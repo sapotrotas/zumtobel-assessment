@@ -37,11 +37,14 @@ function solveChallenge(data) {
 </script>
 
 <template>
-  <Collapsible :title="'Input Method'">
+  <CollapsiblePanel :title="'Input Method'">
     <InputMethod />
-  </Collapsible>
+  </CollapsiblePanel>
 
-  <Collapsible :title="'Challenge Results'" :expanded="true">
+  <CollapsiblePanel
+    :title="'Challenge Results'"
+    :expanded="true"
+  >
     <ClientOnly>
       <div>
         <span class="font-bold">distance: </span>
@@ -52,9 +55,9 @@ function solveChallenge(data) {
         <span v-if="similarity">{{ similarity }}</span>
       </div>
     </ClientOnly>
-  </Collapsible>
+  </CollapsiblePanel>
 
-  <Collapsible :title="'Challenge input'">
+  <CollapsiblePanel :title="'Challenge input'">
     <ChallengeInput @new-data="solveChallenge" />
-  </Collapsible>
+  </CollapsiblePanel>
 </template>

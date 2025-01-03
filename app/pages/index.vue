@@ -14,11 +14,11 @@ const showNavigation = computed(() => {
     </h1>
 
     <InputMethod />
-    
+
     <!-- TODO add instructions -->
     <div v-if="showNavigation">
       <div class="home-nav flex justify-center items-center gap-x-6">
-        <Navigation />
+        <AppNavigation />
       </div>
     </div>
   </div>

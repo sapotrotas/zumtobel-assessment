@@ -11,26 +11,26 @@ const urlFile = `/api/read?file=challenge-${challengeDay}`
 
 const inputData = useState('input-data', () => '')
 
-const emit = defineEmits(["newData"])
+const emit = defineEmits(['newData'])
 
-const geturl = () => {
-  return inputMethod.value === 'file' ?  urlFile : urlAoc
+const getUrl = () => {
+  return inputMethod.value === 'file' ? urlFile : urlAoc
 }
 
 // TODO... improve
 const generateKey = () => {
   if (inputMethod.value === 'session' && aocSessionCookie?.value) {
-    return `${route.meta.id}${aocSessionCookie.value}`
+    return `${challengeDay}_${aocSessionCookie.value}`
   }
 
   if (inputMethod.value === 'file') {
-    return `${route.meta.id}file`
+    return `${challengeDay}_file`
   }
 
   return ''
 }
 
-const { data: challengeInput, status, error } = await useAsyncData(generateKey(), () => useRequestFetch()(geturl()), {
+const { data: challengeInput, status, error } = await useAsyncData(generateKey(), () => useRequestFetch()(getUrl()), {
   watch: [
     () => route.meta.id,
     inputMethod,
@@ -40,7 +40,7 @@ const { data: challengeInput, status, error } = await useAsyncData(generateKey()
     return {
       input,
       challengeDay,
-      sessionId: aocSessionCookie.value,
+      sessionId: aocSessionCookie.value
     }
   },
   getCachedData(key) {
@@ -67,7 +67,6 @@ const { data: challengeInput, status, error } = await useAsyncData(generateKey()
     //   return
     // }
 
-
     // console.log('getCachedData | returning data ', data)
     return data
   }
@@ -92,12 +91,6 @@ watch(
 </script>
 
 <template>
-  <!-- <div v-if="inputMethod">
-    session cookie used = {{ aocSessionCookie }}
-  </div>
-  <br> -->
-
-
   <div v-if="error">
     <div v-if="error.statusCode === 500">
       <p>There was an error fetching data.</p>
@@ -108,9 +101,11 @@ watch(
     </div>
   </div>
   <div v-else>
-    <div v-for="input in inputData">
+    <div
+      v-for="(input, index) in inputData"
+      :key="index"
+    >
       {{ input }}
     </div>
   </div>
 </template>
-

@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -5,25 +7,28 @@ export default defineNuxtConfig({
     '@nuxthub/core',
     '@nuxtjs/tailwindcss'
   ],
+  devtools: { enabled: true },
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
   routeRules: {
     // MOVE PROXY TO ENV FILE MAYBE
     '/api/aoc/**': {
-      proxy: 'https://adventofcode.com/**'  // avoid CORS error
-    },
+      proxy: 'https://adventofcode.com/**' // avoid CORS error
+    }
   },
   nitro: {
     experimental: {
       openAPI: true
     }
   },
-  // hub: {
-    // nuxt hub options
-  // },
+  hub: {
+
+  },
   eslint: {
     config: {
+      nuxt: {
+        sortConfigKeys: true
+      },
       stylistic: {
         quotes: 'single',
         commaDangle: 'never'

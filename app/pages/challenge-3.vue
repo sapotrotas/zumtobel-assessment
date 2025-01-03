@@ -49,11 +49,14 @@ const sumMulSections = (sections) => {
 </script>
 
 <template>
-  <Collapsible :title="'Input Method'">
+  <CollapsiblePanel :title="'Input Method'">
     <InputMethod />
-  </Collapsible>
+  </CollapsiblePanel>
 
-  <Collapsible :title="'Challenge Results'" :expanded="true">
+  <CollapsiblePanel
+    :title="'Challenge Results'"
+    :expanded="true"
+  >
     <ClientOnly>
       <div>
         <span class="font-bold">part 1 sum: </span>
@@ -64,9 +67,9 @@ const sumMulSections = (sections) => {
         <span v-if="part2Sum">{{ part2Sum }}</span>
       </div>
     </ClientOnly>
-  </Collapsible>
+  </CollapsiblePanel>
 
-  <Collapsible :title="'Challenge input'">
+  <CollapsiblePanel :title="'Challenge input'">
     <ChallengeInput @new-data="solveChallenge" />
-  </Collapsible>
-</template> 
+  </CollapsiblePanel>
+</template>

@@ -12,11 +12,12 @@ function solveChallenge(data) {
 
   const arr = data.map(row => row.split(' ').map(Number))
 
-  arr.forEach(row => {
+  arr.forEach((row) => {
     if (row.length < 3 || Number(isRowSafe(row))) {
       // part 1 - initial row is safe
       ++part1Safe.value
-    } else {
+    }
+    else {
       // part 2 - recreate row by removing one index each step
       for (let i = 0; i < row.length; i++) {
         const changedRow = row.slice(0, i).concat(row.slice(i + 1))
@@ -44,9 +45,9 @@ const isRowSafe = (row) => {
 }
 
 const isSafePair = (pair, sign) => {
-  return Math.abs(pair[1] - pair[0]) >= 1 &&
-         Math.abs(pair[1] - pair[0]) <= 3 &&
-         Math.sign(pair[1] - pair[0]) === sign
+  return Math.abs(pair[1] - pair[0]) >= 1
+    && Math.abs(pair[1] - pair[0]) <= 3
+    && Math.sign(pair[1] - pair[0]) === sign
 }
 
 const pairsArray = (arr) => {
@@ -57,28 +58,30 @@ const pairsArray = (arr) => {
 
   return pairs
 }
-
 </script>
 
 <template>
-  <Collapsible :title="'Input Method'">
+  <CollapsiblePanel :title="'Input Method'">
     <InputMethod />
-  </Collapsible>
+  </CollapsiblePanel>
 
-  <Collapsible :title="'Challenge Results'" :expanded="true">
+  <CollapsiblePanel
+    :title="'Challenge Results'"
+    :expanded="true"
+  >
     <ClientOnly>
       <div>
         <span class="font-bold">part 1 safe reports: </span>
-        <span v-if="part1Safe">{{ part1Safe }}</span>  
+        <span v-if="part1Safe">{{ part1Safe }}</span>
       </div>
       <div>
         <span class="font-bold">part 2 safe reports: </span>
         <span v-if="part2Safe">{{ part2Safe }}</span>
       </div>
     </ClientOnly>
-  </Collapsible>
+  </CollapsiblePanel>
 
-  <Collapsible :title="'Challenge input'">
+  <CollapsiblePanel :title="'Challenge input'">
     <ChallengeInput @new-data="solveChallenge" />
-  </Collapsible>
-</template> 
+  </CollapsiblePanel>
+</template>

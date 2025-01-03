@@ -2,7 +2,7 @@
 
 ## Setup
 
-Make sure to install dependencies:
+Install dependencies:
 
 ```bash
 # npm
@@ -22,16 +22,4 @@ npm run dev
 
 # pnpm
 pnpm dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
 ```
