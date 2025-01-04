@@ -1,5 +1,6 @@
 <script setup>
 const nuxtApp = useNuxtApp()
+const config = useRuntimeConfig()
 
 const inputMethod = useCookie('inputMethod')
 const aocSessionCookie = useCookie('session')
@@ -7,7 +8,11 @@ const aocSessionCookie = useCookie('session')
 const route = useRoute()
 const challengeDay = route.meta.id
 const urlAoc = `/api/aoc/2024/day/${challengeDay}/input`
-const urlFile = `/api/read?file=challenge-${challengeDay}`
+// const urlFile = `/api/read?file=challenge-${challengeDay}`
+
+console.log('config.public.appUrl = ', config.public.appUrl)
+const urlFile = `${config.public.appUrl}${config.public.filesPath}/challenge-${challengeDay}.txt`
+// const urlFile = `https://zumtobel-assessment.nuxt.dev/challenges/challenge-${challengeDay}.txt`
 
 const inputData = useState('input-data', () => '')
 

@@ -10,6 +10,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-11-01',
+  runtimeConfig: {
+    public: {
+      appUrl: '',
+      filesPath: '/challenges'
+    }
+  },
   routeRules: {
     '/api/aoc/**': {
       proxy: 'https://adventofcode.com/**' // avoid CORS error
@@ -29,11 +35,6 @@ export default defineNuxtConfig({
         quotes: 'single',
         commaDangle: 'never'
       }
-    }
-  },
-  runtimeConfig: {
-    public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api'
     }
   }
 })
