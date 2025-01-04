@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   runtimeConfig: {
     public: {
-      appUrl: '',
+      appUrl: 'http://localhost:3000',
       filesPath: '/challenges'
     }
   },
@@ -20,14 +20,6 @@ export default defineNuxtConfig({
     '/api/aoc/**': {
       proxy: 'https://adventofcode.com/**' // avoid CORS error
     }
-  },
-  nitro: {
-    experimental: {
-      openAPI: true
-    }
-  },
-  hub: {
-
   },
   eslint: {
     config: {

@@ -7,12 +7,9 @@ const aocSessionCookie = useCookie('session')
 
 const route = useRoute()
 const challengeDay = route.meta.id
-const urlAoc = `/api/aoc/2024/day/${challengeDay}/input`
-// const urlFile = `/api/read?file=challenge-${challengeDay}`
 
-console.log('config.public.appUrl = ', config.public.appUrl)
+const urlAoc = `/api/aoc/2024/day/${challengeDay}/input`
 const urlFile = `${config.public.appUrl}${config.public.filesPath}/challenge-${challengeDay}.txt`
-// const urlFile = `https://zumtobel-assessment.nuxt.dev/challenges/challenge-${challengeDay}.txt`
 
 const inputData = useState('input-data', () => '')
 
@@ -56,7 +53,7 @@ const { data: challengeInput, status, error } = await useAsyncData(generateKey()
 
     // refetch
     if (!data) {
-      console.log('getCachedData | no data found, refetching')
+      // console.log('getCachedData | no data found, refetching')
       return
     }
 
