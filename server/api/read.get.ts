@@ -14,7 +14,18 @@ import * as path from 'node:path';
 
 // console.log('process.env = ', process.env) 
 export default defineEventHandler(async (event) => {
-  const fileUrl = 'https://zumtobel-assessment.nuxt.dev/challenges/challenge-1.txt'
+  const config = useRuntimeConfig()
+
+  // Access baseURL universally
+  const baseURL = config.app.baseURL
+  console.log('baseURL = ', baseURL)
+
+  const apiURL = config.public.apiBase
+  console.log('apiURL = ', apiURL)
+
+  const url = getRequestURL(event)
+  const fileName =  url.searchParams.getAll('file')
+  const fileUrl = `https://zumtobel-assessment.nuxt.dev/challenges/${fileName}.txt`
   const data = await $fetch(fileUrl)
   console.log('data = ', data)
   return data
