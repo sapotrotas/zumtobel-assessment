@@ -12,7 +12,6 @@ import * as path from 'node:path';
 // })
 
 
-console.log('process = ', process.cwd())
 // console.log('process.env = ', process.env) 
 export default defineEventHandler(async (event) => {
   const fileUrl = 'https://zumtobel-assessment.nuxt.dev/challenges/challenge-1.txt'
