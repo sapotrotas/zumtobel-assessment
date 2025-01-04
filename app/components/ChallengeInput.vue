@@ -1,98 +1,86 @@
 <script setup>
-// const nuxtApp = useNuxtApp()
+const nuxtApp = useNuxtApp()
 
-// const inputMethod = useCookie('inputMethod')
-// const aocSessionCookie = useCookie('session')
+const inputMethod = useCookie('inputMethod')
+const aocSessionCookie = useCookie('session')
 
-// const route = useRoute()
-// const challengeDay = route.meta.id
-// const urlAoc = `/api/aoc/2024/day/${challengeDay}/input`
-// const urlFile = `/api/read?file=challenge-${challengeDay}`
+const route = useRoute()
+const challengeDay = route.meta.id
+const urlAoc = `/api/aoc/2024/day/${challengeDay}/input`
+const urlFile = `/api/read?file=challenge-${challengeDay}`
 
-// const inputData = useState('input-data', () => '')
+const inputData = useState('input-data', () => '')
 
-// const emit = defineEmits(['newData'])
+const emit = defineEmits(['newData'])
 
-// const getUrl = () => {
-//   return inputMethod.value === 'file' ? urlFile : urlAoc
-// }
+const getUrl = () => {
+  return inputMethod.value === 'file' ? urlFile : urlAoc
+}
 
-// // TODO... DO NOT CALL API WHEN SETTING SESSION NULL
-// // TODO... DO NOT CALL API WHEN CHANGING METHOD TO AOC SESSION AND IT IS NULL
+// TODO... DO NOT CALL API WHEN SETTING SESSION NULL
+// TODO... DO NOT CALL API WHEN CHANGING METHOD TO AOC SESSION AND IT IS NULL
 
-// // TODO... improve
-// const generateKey = () => {
-//   if (inputMethod.value === 'session' && aocSessionCookie?.value) {
-//     return `${challengeDay}_${aocSessionCookie.value}`
-//   }
+// TODO... improve
+const generateKey = () => {
+  if (inputMethod.value === 'session' && aocSessionCookie?.value) {
+    return `${challengeDay}_${aocSessionCookie.value}`
+  }
 
-//   if (inputMethod.value === 'file') {
-//     return `${challengeDay}_file`
-//   }
+  if (inputMethod.value === 'file') {
+    return `${challengeDay}_file`
+  }
 
-//   return ''
-// }
+  return ''
+}
 
-// const { data: challengeInput, status, error } = await useAsyncData(generateKey(), () => useRequestFetch()(getUrl()), {
-//   watch: [
-//     () => route.meta.id,
-//     inputMethod,
-//     aocSessionCookie
-//   ],
-//   transform(input) {
-//     return {
-//       input,
-//       challengeDay,
-//       sessionId: aocSessionCookie.value
-//     }
-//   },
-//   getCachedData(key) {
-//     const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+const { data: challengeInput, status, error } = await useAsyncData(generateKey(), () => useRequestFetch()(getUrl()), {
+  watch: [
+    () => route.meta.id,
+    inputMethod,
+    aocSessionCookie
+  ],
+  transform(input) {
+    return {
+      input,
+      challengeDay,
+      sessionId: aocSessionCookie.value
+    }
+  },
+  getCachedData(key) {
+    const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
 
-//     // refetch
-//     if (!data) {
-//       console.log('getCachedData | no data found, refetching')
-//       return
-//     }
+    // refetch
+    if (!data) {
+      console.log('getCachedData | no data found, refetching')
+      return
+    }
 
-//     // console.log('getCachedData | returning data ', data)
-//     return data
-//   }
-// })
+    // console.log('getCachedData | returning data ', data)
+    return data
+  }
+})
 
-// watch(
-//   challengeInput,
-//   () => {
-//     if (status.value === 'success' || status.value === 'error') {
-//       inputData.value = challengeInput?.value?.input?.split(/\n/) || []
-//       emit('newData', inputData.value)
-//     }
-//   },
-//   {
-//     immediate: true
-//   }
-// )
+watch(
+  challengeInput,
+  () => {
+    if (status.value === 'success' || status.value === 'error') {
+      inputData.value = challengeInput?.value?.input?.split(/\n/) || []
+      emit('newData', inputData.value)
+    }
+  },
+  {
+    immediate: true
+  }
+)
 
 // TODO... remove
 // aoc github: 53616c7465645f5fe1a8fc4cc124f707231915740288b4464fc94dbc337f4ae2237a6738dd38f6d761e5426dd14b1c7cbc0a79b947a169485736d181f75d5205
 // aoc google: 53616c7465645f5f54e88a90381c442907d6a6cf6c17cb5957031ed1f8bddfc921810fe834cd123eea7ff8ca400ff590072d9005e14ef7d3e7c2a598d003cc90
 
-console.log('process.env = ', process.env) 
-const fileUrl = '/challenges/challenge-1.txt' 
-console.log('fileurl = ', fileUrl)
-
-fetch(fileUrl)
-   .then( r => r.text() )
-   .then( t => console.log('file = ', t) )
-
 </script>
 
 <template>
-
-{{ fileUrl }}
-
-
-  <!-- <div v-if="error">
+  <div v-if="error">
     <div v-if="error.statusCode === 500">
       <p>There was an error fetching data.</p>
       <p>Is the session id correct?</p>
@@ -108,5 +96,5 @@ fetch(fileUrl)
     >
       {{ input }}
     </div>
-  </div> -->
+  </div>
 </template>
