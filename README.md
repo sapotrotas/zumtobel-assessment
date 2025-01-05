@@ -1,5 +1,16 @@
 # Zumtobel assessment
 
+## Features
+-- SSR
+-- NuxtHub
+-- Nuxt Security
+-- Tailwindcss
+-- Cache API requests
+
+-- Input methods: 
+--- Advent of Code session 
+--- Static files (./public/challenges)
+
 ## Setup
 
 Install dependencies:
