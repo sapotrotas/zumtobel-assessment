@@ -12,6 +12,17 @@ const props = defineProps({
 const setsession = () => {
   aocSessionCookie.value = sessionid.value
 }
+
+const clearSession = () => {
+  sessionid.value = null; 
+  aocSessionCookie.value = null
+}
+
+watch(sessionid, () => {
+  if (!sessionid.value) {
+    aocSessionCookie.value = null
+  }
+})
 </script>
 
 <template>
@@ -21,23 +32,23 @@ const setsession = () => {
     </h2>
     <div class="flex justify items-center gap-x-4 ">
       <button
-        :class="{ 'app__button--selected': inputMethod === 'session' }"
+        :class="{ 'app__button--selected': inputMethod === inputMethodType.SESSION }"
         class="app__button"
-        @click="inputMethod = 'session'"
+        @click="inputMethod = inputMethodType.SESSION"
       >
         AoC Session
       </button>
       <button
-        :class="{ 'app__button--selected': inputMethod === 'file' }"
+        :class="{ 'app__button--selected': inputMethod === inputMethodType.FILE }"
         class="app__button"
-        @click="inputMethod = 'file'"
+        @click="inputMethod = inputMethodType.FILE"
       >
         File
       </button>
     </div>
   </div>
   <div
-    v-if="inputMethod === 'session'"
+    v-if="inputMethod === inputMethodType.SESSION"
     class="mt-4"
   >
     <div 
@@ -68,8 +79,10 @@ const setsession = () => {
       <button
         v-if="sessionid"
         class="appearance-none rounded-full py-1.5 pl-3 pr-3 text-base text-gray-600 sm:text-sm/6"
-        @click="sessionid = null; aocSessionCookie = null"
+        @click="clearSession"
+        
       >
+      <!-- @click="sessionid = null; aocSessionCookie = null" -->
         X
       </button>
     </div>

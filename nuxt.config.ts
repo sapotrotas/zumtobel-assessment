@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/api/aoc/**': {
-      proxy: 'https://adventofcode.com/**' // avoid CORS error
+      proxy: 'https://adventofcode.com/**' // CORS
     }
   },
   eslint: {

@@ -3,7 +3,7 @@ const aocSessionCookie = useCookie('session')
 const inputMethod = useCookie('inputMethod')
 
 const showNavigation = computed(() => {
-  return inputMethod.value === 'file' || aocSessionCookie.value
+  return inputMethod.value === inputMethodType.FILE || aocSessionCookie.value
 })
 </script>
 

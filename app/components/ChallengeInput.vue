@@ -16,26 +16,31 @@ const inputData = useState('input-data', () => '')
 const emit = defineEmits(['newData'])
 
 const getUrl = () => {
-  return inputMethod.value === 'file' ? urlFile : urlAoc
+  return inputMethod.value === inputMethodType.FILE ? urlFile : urlAoc
 }
 
-// TODO... DO NOT CALL API WHEN SETTING SESSION NULL
-// TODO... DO NOT CALL API WHEN CHANGING METHOD TO AOC SESSION AND IT IS NULL
-
 // TODO... improve
-const generateKey = () => {
-  if (inputMethod.value === 'session' && aocSessionCookie?.value) {
+const generateCacheKey = () => {
+  if (inputMethod.value === inputMethodType.SESSION && aocSessionCookie?.value) {
     return `${challengeDay}_${aocSessionCookie.value}`
   }
 
-  if (inputMethod.value === 'file') {
+  if (inputMethod.value === inputMethodType.FILE) {
     return `${challengeDay}_file`
   }
 
   return ''
 }
 
-const { data: challengeInput, status, error } = await useAsyncData(generateKey(), () => useRequestFetch()(getUrl()), {
+const { data: challengeInput, error } = await useAsyncData(
+  generateCacheKey(),
+  () => {
+    if (inputMethod.value === inputMethodType.SESSION && !aocSessionCookie.value) {
+      return
+    }
+    return useRequestFetch()(getUrl())
+  }, 
+  {
   watch: [
     () => route.meta.id,
     inputMethod,
@@ -65,10 +70,8 @@ const { data: challengeInput, status, error } = await useAsyncData(generateKey()
 watch(
   challengeInput,
   () => {
-    if (status.value === 'success' || status.value === 'error') {
       inputData.value = challengeInput?.value?.input?.split(/\n/) || []
       emit('newData', inputData.value)
-    }
   },
   {
     immediate: true
