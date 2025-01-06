@@ -2,7 +2,7 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
-  // Your custom configs here
+  // Custom configs
   {
     rules: {
       'nuxt/nuxt-config-keys-order': 'off',
