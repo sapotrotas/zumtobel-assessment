@@ -47,7 +47,7 @@ const { data: challengeInput, error } = await useAsyncData(
     transform(input) {
       input = input?.split(/\r?\n/) || []
       input = input.filter(line => line.trim() !== '')
-      
+
       return {
         input,
         challengeDay,
@@ -56,12 +56,12 @@ const { data: challengeInput, error } = await useAsyncData(
     },
     getCachedData(key) {
       const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
-      
+
       // refetch
       if (!data) {
         return
-          }
-        
+      }
+
       return data
     }
   })
