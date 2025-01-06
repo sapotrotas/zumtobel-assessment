@@ -3,10 +3,11 @@
 [Deployed here](https://zumtobel-assessment.nuxt.dev/)
 
 ## Features
-- SSR
+- Nuxt with SSR
+- Vitest
+- Tailwindcss
 - NuxtHub
 - Nuxt Security
-- Tailwindcss
 - Cache API requests
 - Input methods: 
   - Advent of Code user session 
@@ -34,6 +35,12 @@ npm run dev
 
 # pnpm
 pnpm dev
+```
+## Unit Tests
+
+```bash
+# npm
+npm run test
 ```
 
 ## Lint

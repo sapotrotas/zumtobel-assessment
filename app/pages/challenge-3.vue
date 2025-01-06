@@ -3,12 +3,13 @@ definePageMeta({
   id: 3
 })
 
-const part1Sum = useState('part1safe', () => 0)
-const part2Sum = useState('part2safe', () => 0)
+const part1Sum = useState('part1sum', () => 0)
+const part2Sum = useState('part2sum', () => 0)
 
 function solveChallenge(data) {
   part1Sum.value = 0
   part2Sum.value = 0
+
   if (!data || !data.length) {
     return
   }

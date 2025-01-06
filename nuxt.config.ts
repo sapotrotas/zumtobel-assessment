@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     'nuxt-security',
     '@nuxthub/core',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxt/test-utils/module'
   ],
   devtools: { enabled: true },
   future: { compatibilityVersion: 4 },
