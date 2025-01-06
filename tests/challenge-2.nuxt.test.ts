@@ -12,8 +12,8 @@ const inputData = [
 ]
 
 describe('Challenge 2', () => {
-  it('solve challenge day 2', async () => {
-    const component = await mount(Challenge2)
+  it('solve challenge day 2', () => {
+    const component = mount(Challenge2)
 
     component.vm.solveChallenge(inputData)
 
