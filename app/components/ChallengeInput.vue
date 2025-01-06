@@ -19,7 +19,6 @@ const getUrl = () => {
   return inputMethod.value === inputMethodType.FILE ? urlFile : urlAoc
 }
 
-// TODO... improve
 const generateCacheKey = () => {
   if (inputMethod.value === inputMethodType.SESSION && aocSessionCookie?.value) {
     return `${challengeDay}_${aocSessionCookie.value}`
@@ -39,39 +38,37 @@ const { data: challengeInput, error } = await useAsyncData(
       return
     }
     return useRequestFetch()(getUrl())
-  }, 
-  {
-  watch: [
-    () => route.meta.id,
-    inputMethod,
-    aocSessionCookie
-  ],
-  transform(input) {
-    return {
-      input,
-      challengeDay,
-      sessionId: aocSessionCookie.value
-    }
   },
-  getCachedData(key) {
-    const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+  {
+    watch: [
+      () => route.meta.id,
+      inputMethod,
+      aocSessionCookie
+    ],
+    transform(input) {
+      return {
+        input,
+        challengeDay,
+        sessionId: aocSessionCookie.value
+      }
+    },
+    getCachedData(key) {
+      const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
 
-    // refetch
-    if (!data) {
-      // console.log('getCachedData | no data found, refetching')
-      return
+      // refetch
+      if (!data) {
+        return
+      }
+
+      return data
     }
-
-    // console.log('getCachedData | returning data ', data)
-    return data
-  }
-})
+  })
 
 watch(
   challengeInput,
   () => {
-      inputData.value = challengeInput?.value?.input?.split(/\n/) || []
-      emit('newData', inputData.value)
+    inputData.value = challengeInput?.value?.input?.split(/\n/) || []
+    emit('newData', inputData.value)
   },
   {
     immediate: true

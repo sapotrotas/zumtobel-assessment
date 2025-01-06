@@ -51,7 +51,7 @@ const isSafePair = (pair, sign) => {
 }
 
 const pairsArray = (arr) => {
-  let pairs = []
+  const pairs = []
   for (let i = 1; i < arr.length; i++) {
     pairs.push([arr[i - 1], arr[i]])
   }

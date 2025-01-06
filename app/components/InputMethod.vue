@@ -4,9 +4,11 @@ const aocSessionCookie = useCookie('session')
 
 const sessionid = useState('sessionid', () => aocSessionCookie.value || '')
 
-const props = defineProps({
-  showInstructions: Boolean,
-  default: false
+defineProps({
+  showInstructions: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const setsession = () => {
@@ -14,7 +16,7 @@ const setsession = () => {
 }
 
 const clearSession = () => {
-  sessionid.value = null; 
+  sessionid.value = null
   aocSessionCookie.value = null
 }
 
@@ -51,7 +53,7 @@ watch(sessionid, () => {
     v-if="inputMethod === inputMethodType.SESSION"
     class="mt-4"
   >
-    <div 
+    <div
       v-if="showInstructions"
       class="text-sm mb-4"
     >
@@ -80,9 +82,7 @@ watch(sessionid, () => {
         v-if="sessionid"
         class="appearance-none rounded-full py-1.5 pl-3 pr-3 text-base text-gray-600 sm:text-sm/6"
         @click="clearSession"
-        
       >
-      <!-- @click="sessionid = null; aocSessionCookie = null" -->
         X
       </button>
     </div>

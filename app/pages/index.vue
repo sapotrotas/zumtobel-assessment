@@ -13,7 +13,7 @@ const showNavigation = computed(() => {
       Welcome
     </h1>
 
-    <InputMethod :show-instructions="true"/>
+    <InputMethod :show-instructions="true" />
 
     <div v-if="showNavigation">
       <div class="home-nav flex justify-center items-center gap-x-6">

@@ -1,15 +1,16 @@
 # Zumtobel assessment
 
-## Features
--- SSR
--- NuxtHub
--- Nuxt Security
--- Tailwindcss
--- Cache API requests
+[Deployed here](https://zumtobel-assessment.nuxt.dev/)
 
--- Input methods: 
---- Advent of Code session 
---- Static files (./public/challenges)
+## Features
+- SSR
+- NuxtHub
+- Nuxt Security
+- Tailwindcss
+- Cache API requests
+- Input methods: 
+  - Advent of Code user session 
+  - Static files (./public/challenges)
 
 ## Setup
 
@@ -33,4 +34,11 @@ npm run dev
 
 # pnpm
 pnpm dev
+```
+
+## Lint
+
+```bash
+# npm
+npm run lint
 ```
