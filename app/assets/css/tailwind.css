@@ -34,9 +34,6 @@
   @apply focus-visible:ring-2;
   @apply focus-visible:ring-inset;
   @apply focus-visible:ring-secondary-500;
-  /* &:hover {
-    @apply ;
-  } */
 }
 
 .app__button--selected {

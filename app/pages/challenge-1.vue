@@ -11,13 +11,12 @@ function solveChallenge(data) {
   similarity.value = 0
 
   const arr = data.map(row => row.split('  '))
-  arr.pop()
 
   const left = arr.map(([leftItem]) => +leftItem).sort()
   const right = arr.map(([, rightItem]) => +rightItem).sort()
 
   // part 1
-  for (let i = 0; i < left.length - 1; i++) {
+  for (let i = 0; i < left.length; i++) {
     distance.value += Math.abs(right[i] - left[i])
   }
 

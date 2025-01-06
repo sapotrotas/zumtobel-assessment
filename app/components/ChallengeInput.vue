@@ -23,7 +23,6 @@ const generateCacheKey = () => {
   if (inputMethod.value === inputMethodType.SESSION && aocSessionCookie?.value) {
     return `${challengeDay}_${aocSessionCookie.value}`
   }
-
   if (inputMethod.value === inputMethodType.FILE) {
     return `${challengeDay}_file`
   }
@@ -46,6 +45,9 @@ const { data: challengeInput, error } = await useAsyncData(
       aocSessionCookie
     ],
     transform(input) {
+      input = input?.split(/\r?\n/) || []
+      input = input.filter(line => line.trim() !== '')
+      
       return {
         input,
         challengeDay,
@@ -54,12 +56,12 @@ const { data: challengeInput, error } = await useAsyncData(
     },
     getCachedData(key) {
       const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
-
+      
       // refetch
       if (!data) {
         return
-      }
-
+          }
+        
       return data
     }
   })
@@ -67,7 +69,7 @@ const { data: challengeInput, error } = await useAsyncData(
 watch(
   challengeInput,
   () => {
-    inputData.value = challengeInput?.value?.input?.split(/\n/) || []
+    inputData.value = challengeInput?.value?.input || []
     emit('newData', inputData.value)
   },
   {
